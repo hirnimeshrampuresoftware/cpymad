@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up QEMU
-        if: ${{ matrix.image == '*aarch64' }}
+        if: ${{ matrix.image == 'quay.io/pypa/manylinux2014_aarch64' }}
         uses: docker/setup-qemu-action@v1
 
       - run: echo "MADX_VERSION=$(cat MADX_VERSION)" >> $GITHUB_ENV

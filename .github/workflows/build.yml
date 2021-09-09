@@ -53,7 +53,7 @@ jobs:
             -w /mnt/cpymad \
             -v `pwd`/..:/mnt \
             ${{ matrix.image }} \
-            .github/build/manylinux1/cpymad.sh
+            bash -exc '.github/build/manylinux1/cpymad.sh'
 
       - name: Upload cpymad wheels
         uses: actions/upload-artifact@v2

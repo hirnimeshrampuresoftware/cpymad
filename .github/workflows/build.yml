@@ -45,7 +45,7 @@ jobs:
             -w /mnt/MAD-X \
             -v `pwd`/..:/mnt \
             ${{ matrix.image }} \
-            ../cpymad/.github/build/manylinux1/madx.sh
+            bash -exc '../cpymad/.github/build/manylinux1/madx.sh'
 
       - name: Build cpymad wheels
         run: |

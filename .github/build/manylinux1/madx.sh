@@ -13,6 +13,8 @@ cd build
 
 $PY/pip install --upgrade cmake
 $PY/cmake .. \
+    -CXX=aarch64-linux-gnu-g++ \
+    -CC=aarch64-linux-gnu-gcc \
     -DBUILD_SHARED_LIBS=OFF \
     -DMADX_STATIC=ON \
     -DCMAKE_INSTALL_PREFIX=../dist \

@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         image: [quay.io/pypa/manylinux1_x86_64, quay.io/pypa/manylinux2014_aarch64]
+      fail-fast: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

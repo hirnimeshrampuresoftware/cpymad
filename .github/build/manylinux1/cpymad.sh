@@ -16,6 +16,7 @@ export LDFLAGS="-fno-lto"
 # Copy the cpymad source files to a build folder in order to avoid permission
 # issues with the host filesystem (on both sides):
 mkdir -p build
+yum install -y glibc-static
 $PY/python setup.py egg_info
 tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
     tar -x -C build --no-same-owner

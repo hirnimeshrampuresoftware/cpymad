@@ -46,8 +46,7 @@ jobs:
             -w /mnt/MAD-X \
             -v `pwd`/..:/mnt \
             ${{ matrix.image }} \
-            bash -exc ' yum install -y glibc-static && \
-            ../cpymad/.github/build/manylinux1/madx.sh'
+            ../cpymad/.github/build/manylinux1/madx.sh
 
       - name: Build cpymad wheels
         run: |

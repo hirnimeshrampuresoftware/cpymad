@@ -20,8 +20,7 @@ $PY/python setup.py egg_info
 tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
     tar -x -C build --no-same-owner
 
-/opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/ld --plugin /opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/liblto_plugin.so /mnt/MAD-X/dist/lib/libmadx.a
-yum install -y glibc-static
+#/opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/ld --plugin /opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/liblto_plugin.so /mnt/MAD-X/dist/lib/libmadx.a
 
 # We create the wheels from the source distribution to verify that the
 # source distribution can be used as installation medium. We will later
@@ -31,7 +30,7 @@ $PY/pip install cython
 $PY/python setup.py sdist
 $PY/pip uninstall cython -y
 
-for PYBIN in /opt/python/cp3*/bin; do
+for PYBIN in /opt/python/cp38*/bin; do
     "${PYBIN}/pip" install -U setuptools
     "${PYBIN}/pip" wheel dist/*.tar.gz --no-deps -w dist/
 done

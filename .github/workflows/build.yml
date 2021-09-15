@@ -87,11 +87,11 @@ jobs:
             -v `pwd`/..:/mnt \
             quay.io/pypa/manylinux2014_aarch64 \
             bash -exc 'pwd && \
-            uname -m && \
             ../cpymad/.github/build/manylinux1/madx.sh && \
             pwd && \
-            uname -m && \
-            ../cpymad/.github/build/manylinux1/cpymad.sh'
+            cd ../cpymad && \
+            pwd && \
+            .github/build/manylinux1/cpymad.sh'
       - name: Upload cpymad wheels
         uses: actions/upload-artifact@v2
         with:

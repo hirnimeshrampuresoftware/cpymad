@@ -16,11 +16,11 @@ export LDFLAGS="-fno-lto"
 # Copy the cpymad source files to a build folder in order to avoid permission
 # issues with the host filesystem (on both sides):
 mkdir -p build
-yum install -y glibc-static
 $PY/python setup.py egg_info
 tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
     tar -x -C build --no-same-owner
 
+/opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/ld --plugin /usr/libexec/gcc/aarch64-redhat-linux/10/liblto_plugin.so /mnt/MAD-X/dist/lib/libmadx.a
 # We create the wheels from the source distribution to verify that the
 # source distribution can be used as installation medium. We will later
 # upload this exact source distribution to PyPI:

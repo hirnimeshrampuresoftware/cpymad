@@ -21,6 +21,8 @@ tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
     tar -x -C build --no-same-owner
 
 /opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/ld --plugin /opt/rh/devtoolset-10/root/usr/libexec/gcc/aarch64-redhat-linux/10/liblto_plugin.so /mnt/MAD-X/dist/lib/libmadx.a
+yum install -y glibc-static
+
 # We create the wheels from the source distribution to verify that the
 # source distribution can be used as installation medium. We will later
 # upload this exact source distribution to PyPI:

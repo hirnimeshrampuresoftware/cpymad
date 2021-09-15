@@ -91,7 +91,7 @@ jobs:
             ../cpymad/.github/build/manylinux1/madx.sh && \
             pwd && \
             uname -m && \
-            .github/build/manylinux1/cpymad.sh'
+            ../cpymad/.github/build/manylinux1/cpymad.sh'
       - name: Upload cpymad wheels
         uses: actions/upload-artifact@v2
         with:

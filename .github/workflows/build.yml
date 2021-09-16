@@ -81,18 +81,27 @@ jobs:
         with:
           madx_version: ${{ env.MADX_VERSION }}
 
-      - name: Build MAD-X
+      - name: Build MAD-X and cpymad
+        if: steps.madx-build-cache.outputs.cache-hit != 'true'
         run: |
           docker run --rm --init \
             -w /mnt/MAD-X \
             -v `pwd`/..:/mnt \
             quay.io/pypa/manylinux2014_aarch64 \
             bash -exc 'pwd && \
-            if [ steps.madx-build-cache.outputs.cache-hit != 'true' ] ; then
-                ../cpymad/.github/build/manylinux1/madx.sh
-            fi && \
-            cd ../cpymad && \
+            ../cpymad/.github/build/manylinux1/madx.sh
+            cd /mnt/cpymad && \
             .github/build/manylinux1/cpymad.sh'
+      - name: Build cpymad
+        if: steps.madx-build-cache.outputs.cache-hit == 'true'
+        run: |
+          docker run --rm --init \
+            -w /mnt/MAD-X \
+            -v `pwd`/..:/mnt \
+            quay.io/pypa/manylinux2014_aarch64 \
+            bash -exc 'pwd && \
+            cd /mnt/cpymad && \
+            .github/build/manylinux1/cpymad.sh'            
       - name: Upload cpymad wheels
         uses: actions/upload-artifact@v2
         with:

@@ -25,5 +25,4 @@ $PY/cmake .. \
     -DMADX_ONLINE=OFF \
     -DMADX_FORCE_32=OFF \
     -DMADX_X11=OFF \
-    --disable-libquadmath
 $PY/cmake --build . --target install

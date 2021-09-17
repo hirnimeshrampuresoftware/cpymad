@@ -10,8 +10,8 @@ set -ex
 # Build variables:
 export MADXDIR=$(readlink -nf ../MAD-X/dist)
 export X11=0 BLAS=0 LAPACK=0
-export CFLAGS="--disable-libquadmath-support -fno-lto"
-export LDFLAGS="--disable-libquadmath-support -fno-lto"
+export CFLAGS="-fno-lto"
+export LDFLAGS="-fno-lto"
 #export CFLAGS="-flto"
 #export LDFLAGS="-flto"
 
@@ -35,7 +35,7 @@ $PY/pip uninstall cython -y
 
 for PYBIN in /opt/python/cp38*/bin; do
     "${PYBIN}/pip" install -U setuptools
-    "${PYBIN}/pip" wheel dist/*.tar.gz --no-deps -w dist/
+    "${PYBIN}/pip" wheel dist/*.tar.gz --disable-libquadmath-support --no-deps -w dist/
 done
 popd
 

@@ -20,9 +20,10 @@ $PY/cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-fvisibility=hidden -flto" \
     -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto" \
-    -DCMAKE_Fortran_FLAGS="-flibquadmath=disable -fvisibility=hidden -flto" \
+    -DCMAKE_Fortran_FLAGS="-fvisibility=hidden -flto" \
     -DMADX_INSTALL_DOC=OFF \
     -DMADX_ONLINE=OFF \
     -DMADX_FORCE_32=OFF \
-    -DMADX_X11=OFF
+    -DMADX_X11=OFF \
+    --disable-libquadmath
 $PY/cmake --build . --target install

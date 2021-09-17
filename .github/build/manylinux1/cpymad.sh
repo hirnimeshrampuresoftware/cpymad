@@ -35,7 +35,7 @@ $PY/pip uninstall cython -y
 
 for PYBIN in /opt/python/cp38*/bin; do
     "${PYBIN}/pip" install -U setuptools
-    "${PYBIN}/pip" wheel dist/*.tar.gz --disable-libquadmath-support --no-deps -w dist/
+    "${PYBIN}/pip" wheel dist/*.tar.gz --no-deps -w dist/
 done
 popd
 

@@ -10,8 +10,8 @@ set -ex
 # Build variables:
 export MADXDIR=$(readlink -nf ../MAD-X/dist)
 export X11=0 BLAS=0 LAPACK=0
-export CFLAGS="--disable-libquadmath -fno-lto"
-export LDFLAGS="--disable-libquadmath -fno-lto"
+export CFLAGS="--disable-libquadmath-support -fno-lto"
+export LDFLAGS="--disable-libquadmath-support -fno-lto"
 #export CFLAGS="-flto"
 #export LDFLAGS="-flto"
 

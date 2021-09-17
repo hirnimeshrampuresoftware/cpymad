@@ -5,10 +5,10 @@ set -ex
 # Must be run from the root the directory of the MAD-X sources.
 # Builds in './build' and installs to './dist'.
 
+yum install -y glibc-static
 rm -rf build
 mkdir build
 cd build
-yum install -y glibc-static
 
 : ${PY:=/opt/python/cp36-cp36m/bin}
 
@@ -24,5 +24,5 @@ $PY/cmake .. \
     -DMADX_INSTALL_DOC=OFF \
     -DMADX_ONLINE=OFF \
     -DMADX_FORCE_32=OFF \
-    -DMADX_X11=OFF \
+    -DMADX_X11=OFF
 $PY/cmake --build . --target install

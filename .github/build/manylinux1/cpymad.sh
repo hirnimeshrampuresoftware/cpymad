@@ -10,15 +10,15 @@ set -ex
 # Build variables:
 export MADXDIR=$(readlink -nf ../MAD-X/dist)
 export X11=0 BLAS=0 LAPACK=0
-export CFLAGS="-fno-lto"
-export LDFLAGS="-fno-lto"
+export CFLAGS="--disable-libquadmath -fno-lto"
+export LDFLAGS="--disable-libquadmath -fno-lto"
 #export CFLAGS="-flto"
 #export LDFLAGS="-flto"
 
 # Copy the cpymad source files to a build folder in order to avoid permission
 # issues with the host filesystem (on both sides):
 mkdir -p build
-$PY/python setup.py egg_info --madxdir=$MADXDIR
+$PY/python setup.py egg_info
 tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
     tar -x -C build --no-same-owner
 
@@ -29,7 +29,8 @@ tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
 # upload this exact source distribution to PyPI:
 pushd build
 $PY/pip install cython
-$PY/python setup.py sdist --madxdir=$MADXDIR
+$PY/python setup.py sdist
+# --madxdir=$MADXDIR
 $PY/pip uninstall cython -y
 
 for PYBIN in /opt/python/cp38*/bin; do

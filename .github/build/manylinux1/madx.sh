@@ -20,7 +20,7 @@ $PY/cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-fvisibility=hidden -flto" \
     -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto" \
-    -DCMAKE_Fortran_FLAGS="-fvisibility=hidden -flto" \
+    -DCMAKE_Fortran_FLAGS="--disable-libquadmath -fvisibility=hidden -flto" \
     -DMADX_INSTALL_DOC=OFF \
     -DMADX_ONLINE=OFF \
     -DMADX_FORCE_32=OFF \

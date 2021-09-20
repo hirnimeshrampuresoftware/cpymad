@@ -7,6 +7,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: git clone https://github.com/MethodicalAcceleratorDesign/MAD-X
+    - run: git clone https://github.com/hirnimeshrampuresoftware/MAD-X
         ../MAD-X -b "${{ inputs.madx_version }}" --depth 1
       shell: bash

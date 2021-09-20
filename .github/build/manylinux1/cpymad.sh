@@ -28,7 +28,7 @@ tar -c $(cat src/cpymad.egg-info/SOURCES.txt) |
 pushd build
 $PY/pip install cython
 $PY/python setup.py sdist
-# --diable-libquadmath --madxdir=$MADXDIR
+#--madxdir=$MADXDIR
 $PY/pip uninstall cython -y
 
 for PYBIN in /opt/python/cp38*/bin; do
